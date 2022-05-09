@@ -21,7 +21,7 @@ public class Bank {
     @Enumerated(EnumType.STRING)
     private BankCode bankCode;
 
-    protected Bank(String name, BankCode bankCode) {
+    public Bank(String name, BankCode bankCode) {
         this.name = name;
         this.bankCode = bankCode;
     }

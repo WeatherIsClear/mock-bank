@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import wheatherIsClear.Enums.BillKeyStatus;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -25,7 +26,9 @@ public class BillKey {
     @Enumerated(EnumType.STRING)
     private BillKeyStatus billKeyStatus;
 
-
-
-
+    public BillKey(UUID billKey, Account account) {
+        this.billKey = String.valueOf(billKey);
+        this.account = account;
+        this.billKeyStatus = BillKeyStatus.ISSUED;
+    }
 }

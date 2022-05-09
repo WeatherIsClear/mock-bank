@@ -25,7 +25,7 @@ public class Account {
     private Bank bank;
 
     public Account(String number, String password, BigDecimal amount, Bank bank) {
-        this.number = number;
+        this.number = String.format("%s-%s", bank.getBankCode(), number);
         this.password = password;
         this.amount = amount;
         this.bank = bank;
