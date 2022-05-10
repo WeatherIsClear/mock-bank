@@ -1,13 +1,14 @@
 package wheatherIsClear.bank.service;
 
 import wheatherIsClear.bank.entity.Account;
+import wheatherIsClear.bank.entity.BillKey;
 
 import java.math.BigDecimal;
 
 public interface TransactionService {
 
-    boolean checkBillKey(String billKey);
+    Boolean checkBillKey(String billKey);
 
-    BigDecimal trade(String billKey, String to, String from, BigDecimal amount);
+    BigDecimal trade(String billKey, String to, BigDecimal amount);
 
 }

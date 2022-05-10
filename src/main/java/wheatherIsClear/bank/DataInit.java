@@ -29,9 +29,9 @@ public class DataInit {
         bankRepository.save(tyBank);
         bankRepository.save(sjBank);
 
-        Account dyBankAccount = new Account("123-456-789", "1234", BigDecimal.valueOf(10000000L), dyBank);
-        Account tyBankAccount = new Account("234-567-890", "1234", BigDecimal.valueOf(10000000L), tyBank);
-        Account sjBankAccount = new Account("345-678-901", "1234", BigDecimal.valueOf(10000000L), sjBank);
+        Account dyBankAccount = new Account("123-456-789", "1234", BigDecimal.valueOf(10000L), dyBank);
+        Account tyBankAccount = new Account("234-567-890", "1234", BigDecimal.valueOf(10000L), tyBank);
+        Account sjBankAccount = new Account("345-678-901", "1234", BigDecimal.valueOf(10000L), sjBank);
 
         accountRepository.save(dyBankAccount);
         accountRepository.save(tyBankAccount);

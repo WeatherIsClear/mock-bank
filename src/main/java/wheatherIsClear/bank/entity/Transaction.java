@@ -36,6 +36,14 @@ public class Transaction {
     @JoinColumn(name = "bill_key_id")
     private BillKey billKey;
 
+    public Transaction(BigDecimal amount, BigDecimal restAmount, TransactionType type, Account to_id, Account from_id, BillKey billKey) {
+        this.amount = amount;
+        this.restAmount = restAmount;
+        this.type = type;
+        this.to_id = to_id;
+        this.from_id = from_id;
+        this.billKey = billKey;
+    }
 
 
 

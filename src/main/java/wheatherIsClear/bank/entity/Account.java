@@ -30,4 +30,12 @@ public class Account {
         this.amount = amount;
         this.bank = bank;
     }
+
+    public void deposit(BigDecimal depositAmount) {
+        this.amount = amount.add(depositAmount);
+    }
+
+    public void withdrawal(BigDecimal withdrawalAmount) {
+        this.amount = amount.subtract(withdrawalAmount);
+    }
 }

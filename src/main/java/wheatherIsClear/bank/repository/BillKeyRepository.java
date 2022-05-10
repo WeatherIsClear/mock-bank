@@ -7,6 +7,6 @@ import wheatherIsClear.bank.entity.BillKey;
 import java.util.Optional;
 
 public interface BillKeyRepository extends JpaRepository<BillKey, Long> {
-    BillKey findByAccount(Account account);
-    BillKey findByBillKey(String billKey);
+    Optional<BillKey> findByAccount(Account account);
+    Optional<BillKey> findByBillKey(String billKey);
 }
