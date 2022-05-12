@@ -5,6 +5,6 @@ import wheatherIsClear.bank.entity.BillKey;
 
 @Service
 public interface BillKeyService {
-    String generateBillKey(String bankCode, String accountNumber);
+    String generateBillKey(String bankCode, String accountNumber, String password);
 
 }

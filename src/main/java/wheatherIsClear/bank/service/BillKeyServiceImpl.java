@@ -20,11 +20,11 @@ public class BillKeyServiceImpl implements BillKeyService{
     private final BillKeyRepository billKeyRepository;
 
     @Override
-    public String generateBillKey(String bankCode, String accountNumber) {
+    public String generateBillKey(String bankCode, String accountNumber, String password) {
         String accountFullNumber = String.format("%s-%s", BankCode.valueOf(bankCode), accountNumber);
         Account findAccount = accountRepository.findByNumber(accountFullNumber).orElse(null);
 
-        if (findAccount != null) {
+        if (findAccount != null && findAccount.getPassword().equals(password)) {
             BillKey billKey = new BillKey(UUID.randomUUID(), findAccount);
             billKeyRepository.save(billKey);
 
