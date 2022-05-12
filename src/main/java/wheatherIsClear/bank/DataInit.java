@@ -2,6 +2,7 @@ package wheatherIsClear.bank;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import wheatherIsClear.Enums.BankCode;
 import wheatherIsClear.bank.entity.Account;
@@ -18,6 +19,7 @@ public class DataInit {
 
     private final BankRepository bankRepository;
     private final AccountRepository accountRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @PostConstruct
     private void init() {
@@ -29,9 +31,9 @@ public class DataInit {
         bankRepository.save(tyBank);
         bankRepository.save(sjBank);
 
-        Account dyBankAccount = new Account("123-456-789", "1234", BigDecimal.valueOf(10000L), dyBank);
-        Account tyBankAccount = new Account("234-567-890", "1234", BigDecimal.valueOf(10000L), tyBank);
-        Account sjBankAccount = new Account("345-678-901", "1234", BigDecimal.valueOf(10000L), sjBank);
+        Account dyBankAccount = new Account("123-456-789", passwordEncoder.encode("1234"), BigDecimal.valueOf(10000L), dyBank);
+        Account tyBankAccount = new Account("234-567-890", passwordEncoder.encode("1234"), BigDecimal.valueOf(10000L), tyBank);
+        Account sjBankAccount = new Account("345-678-901", passwordEncoder.encode("1234"), BigDecimal.valueOf(10000L), sjBank);
 
         accountRepository.save(dyBankAccount);
         accountRepository.save(tyBankAccount);

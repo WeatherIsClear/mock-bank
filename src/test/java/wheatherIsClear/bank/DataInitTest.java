@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 import wheatherIsClear.Enums.BankCode;
 import wheatherIsClear.bank.entity.Account;
@@ -25,6 +26,9 @@ class DataInitTest {
     @Autowired
     AccountRepository accountRepository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Test
     void dataInitTest() {
         Bank dyBank = bankRepository.findByBankCode(BankCode.DY);
@@ -34,6 +38,8 @@ class DataInitTest {
         assert account != null;
         assertThat(account.getBank().getBankCode()).isEqualTo(BankCode.DY);
         assertThat(findAccount).isPresent();
+        System.out.println("account.getPassword() = " + account.getPassword());
+        assertThat(passwordEncoder.matches("1234", account.getPassword())).isTrue();
     }
 
 }

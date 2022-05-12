@@ -38,7 +38,7 @@ class TransactionServiceImplTest {
     void 성공적인_입금() throws Exception
     {
         //given
-        String billKey = billKeyService.generateBillKey("DY", "123-456-789");
+        String billKey = billKeyService.generateBillKey("DY", "123-456-789", "1234");
         BigDecimal amount = BigDecimal.valueOf(9000L);
         //when
         BigDecimal result = transactionService.trade(billKey, "TY-234-567-890", amount);

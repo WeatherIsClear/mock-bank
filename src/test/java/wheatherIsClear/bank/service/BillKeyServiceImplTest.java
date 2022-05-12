@@ -26,7 +26,7 @@ class BillKeyServiceImplTest {
     @Test
     void successBillKeyGenerateTest() {
         Account findAccount = accountRepository.findByNumber("DY-123-456-789").orElse(null);
-        billKeyService.generateBillKey("DY", "123-456-789");
+        billKeyService.generateBillKey("DY", "123-456-789", "1234");
         BillKey findBillKey = billKeyRepository.findByAccount(findAccount).orElse(null);
         assertThat(findBillKey).isNotNull();
     }
