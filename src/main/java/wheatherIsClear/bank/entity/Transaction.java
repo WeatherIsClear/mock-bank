@@ -26,22 +26,22 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "to_id")
-    private Account to_id;
+    private Account toAccount;
 
     @ManyToOne
     @JoinColumn(name = "from_id")
-    private Account from_id;
+    private Account fromAccount;
 
     @ManyToOne
     @JoinColumn(name = "bill_key_id")
     private BillKey billKey;
 
-    public Transaction(BigDecimal amount, BigDecimal restAmount, TransactionType type, Account to_id, Account from_id, BillKey billKey) {
+    public Transaction(BigDecimal amount, BigDecimal restAmount, TransactionType type, Account toAccount, Account fromAccount, BillKey billKey) {
         this.amount = amount;
         this.restAmount = restAmount;
         this.type = type;
-        this.to_id = to_id;
-        this.from_id = from_id;
+        this.toAccount = toAccount;
+        this.fromAccount = fromAccount;
         this.billKey = billKey;
     }
 
