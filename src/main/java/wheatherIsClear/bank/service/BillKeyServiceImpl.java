@@ -1,6 +1,7 @@
 package wheatherIsClear.bank.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import wheatherIsClear.Enums.BankCode;
 import wheatherIsClear.bank.entity.Account;
@@ -18,13 +19,14 @@ public class BillKeyServiceImpl implements BillKeyService{
 
     private final AccountRepository accountRepository;
     private final BillKeyRepository billKeyRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public String generateBillKey(String bankCode, String accountNumber, String password) {
         String accountFullNumber = String.format("%s-%s", BankCode.valueOf(bankCode), accountNumber);
         Account findAccount = accountRepository.findByNumber(accountFullNumber).orElse(null);
 
-        if (findAccount != null && findAccount.getPassword().equals(password)) {
+        if (findAccount != null && passwordEncoder.matches(password, findAccount.getPassword())) {
             BillKey billKey = new BillKey(UUID.randomUUID(), findAccount);
             billKeyRepository.save(billKey);
 
